@@ -19,7 +19,9 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 # Run bundle install to install gems inside the gemfile
 RUN bundle install
 
-#RUN rake assets:precompile
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Copy the whole app
 COPY . /myapp
