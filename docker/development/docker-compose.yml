@@ -11,13 +11,16 @@ services:
       - MYSQL_DATABASE=my_test_docker_project_development
   web:
     build: ../../
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: docker-entrypoint.sh
+    #command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - ../../:/myapp
     ports:
       - "3000:3000"
     depends_on:
       - db
+    env_file:
+      - '../../.env'
   redis:
     image: redis
     volumes:
@@ -28,7 +31,7 @@ services:
     volumes:
       - ../../:/myapp
     environment:
-      RAILS_ENV: "docker_development"
+#      RAILS_ENV: "docker_development"
       REDIS_URL: "redis://redis:6379/12"
     depends_on:
       - redis

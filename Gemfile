@@ -16,11 +16,10 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-gem 'redis-namespace'
 
-gem 'sidekiq', '~> 5.1.3'
+gem 'sidekiq'
+gem 'redis'
+gem 'redis-namespace'
 gem 'sidekiq-cron'
 
 # Use CoffeeScript for .coffee assets and views
